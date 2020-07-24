@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import {Card, CardImg, CardBody, CardText, CardTitle} from 'reactstrap';
 
 export default class Dishdetail extends Component  {
-  constructor(props){
-    super(props);
-  }
   renderComments(comments){
     const allComments = comments.map((comment) => {
       return(
