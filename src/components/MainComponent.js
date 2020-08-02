@@ -28,6 +28,11 @@ export default class Main extends Component {
         <Home dish={this.state.dishes.filter(dish => dish.featured === true)[0]} leader={this.state.leaders.filter(leader => leader.featured === true)[0]} promotion={this.state.promotions.filter(promotion => promotion.featured === true)[0]}/>
       );
     }
+    const DishWithID = ({match}) => {
+      return(
+        <Dishdetail dish={this.state.dishes.filter(dish => dish.id === parseInt(match.params.dishID,10))[0]} comments={this.state.comments.filter(comment => comment.dishId === parseInt(match.params.dishID,10))}/>
+      );
+    }
     return (
       <div>
         <Header />
@@ -35,6 +40,7 @@ export default class Main extends Component {
             <Route path="/home" component={HomePage} />
             <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes} />} />
             <Route path="/contactus" component={Contact} />
+            <Route path="/menu/:dishID" component={DishWithID} />
             <Redirect to="/home" />
           </Switch>
         <Footer />
